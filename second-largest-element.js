@@ -1,49 +1,25 @@
-// Brute Force Approach
+// More efficient way
 
-function secondLargestBruteForce(arr) {
-    if (arr.length < 2) return "The second largest does not exist";
+function secondLargest(arr) {
+  let first = -Infinity;   // largest
+  let second = -Infinity;  // second largest
 
-    arr.sort((a, b) => a - b);
+  for (let i = 0; i < arr.length; i++) {
+    let num = arr[i];
 
-    const largest = arr[arr.length - 1];
-    let index = arr.length - 2;
-
-    // Skip duplicates of the largest element
-    while (index >= 0 && arr[index] === largest) {
-        index--;
+    if (num > first) {
+      // shift down
+      second = first;
+      first = num;
+    } else if (num > second && num < first) {
+      // update second only if it's less than first
+      second = num;
     }
+  }
 
-    return index >= 0 ? `The second largest element is \${arr[index]}` : "The second largest does not exist";
+  return second === -Infinity ? null : second;
 }
 
-// Test cases
-console.log(secondLargestBruteForce([12, 35, 1, 10, 34, 1]));
-console.log(secondLargestBruteForce([10, 5, 10]));
-console.log(secondLargestBruteForce([10, 10, 10]));
-
-// Optimized Approach
-
-function secondLargestOptimized(arr) {
-    if (arr.length < 2) return "The second largest does not exist";
-
-    let firstMax = -1;
-    let secondMax = -1;
-
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] > firstMax) {
-            secondMax = firstMax;
-            firstMax = arr[i];
-        } else if (arr[i] < firstMax && arr[i] > secondMax) {
-            secondMax = arr[i];
-        }
-    }
-
-    return secondMax !== -1
-        ? `The second largest element is \${secondMax}`
-        : "The second largest does not exist";
-}
-
-// Test cases
-console.log(secondLargestOptimized([12, 35, 1, 10, 34, 1]));
-console.log(secondLargestOptimized([10, 5, 10]));
-console.log(secondLargestOptimized([10, 10, 10]));
+// Example usage:
+console.log(secondLargest([10, 20, 4, 45, 99])); // Output: 45
+console.log(secondLargest([5, 5, 5]));           // Output: null (no second largest)
