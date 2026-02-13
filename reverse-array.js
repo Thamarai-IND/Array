@@ -30,3 +30,5 @@ function reverseArray2(arr) {
 let arr2 = [1,2,3,4,5];
 const reponse2 = reverseArray2(arr2);
 console.log(reponse2);
+
+// time complexity O(N) and auxiliary space complexity O(1)
