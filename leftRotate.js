@@ -27,5 +27,28 @@ function leftRotate2(arr) {
 }
 
 let arr2 = [1,2,3,4,5];
-const response2 = leftRotate2(arr);
+const response2 = leftRotate2(arr2);
 console.log(response2);
+
+// left rotate by D position
+
+function leftRotateByOne(arr) {
+    let first = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        arr[i - 1] = arr[i];
+    }
+    arr[arr.length - 1] = first;
+    return arr;
+}
+
+function leftRotateNaive(arr, d) {
+    for (let i = 0; i < d; i++) {
+        leftRotateByOne(arr);
+    }
+    return arr;
+}
+
+let arr3 = [1, 2, 3, 4, 5]
+let d = 3;
+const response3 = leftRotateNaive(arr3,d);
+console.log(response3);
