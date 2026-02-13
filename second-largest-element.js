@@ -22,4 +22,4 @@ function secondLargest(arr) {
 
 // Example usage:
 console.log(secondLargest([10, 20, 4, 45, 99])); // Output: 45
-console.log(secondLargest([5, 5, 5]));           // Output: null (no second largest)
+console.log(secondLargest([5, 5, 6]));           // Output: null (no second largest)
