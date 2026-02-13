@@ -33,3 +33,6 @@ function zerosToEnd2(arr) {
 let arr2 = [6,0,0,0,0,8];
 const response2 = zerosToEnd2(arr2);
 console.log(response2);
+
+
+// time complexity O(N) and auxiliary space complexity O(1)
