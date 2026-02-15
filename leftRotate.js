@@ -74,3 +74,26 @@ let arr4 = [1, 2, 3, 4, 5]
 let d1 = 2;
 const response4 = leftRotate4(arr4,d1);
 console.log(response4);
+
+// more efficient method
+
+function leftRotateEfficient(arr,d) {
+    let n = arr.length;
+    reverse(arr, 0, d-1);
+    reverse(arr, d, n-1);
+    reverse(arr, 0, n-1);
+    return arr;
+}
+
+function reverse(arr,l,r) {
+    while(l < r) {
+        [arr[l],arr[r]] = [arr[r],arr[l]];
+        l++;
+        r--;
+    }
+}
+
+let array = [5,6,7,8,9,10];
+let pos = 3;
+const result = leftRotateEfficient(array,pos);
+console.log("More Efficient way for left rotate : ",result);
