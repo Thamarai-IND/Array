@@ -36,9 +36,63 @@ function removeDupOptimized(arr) {
             index++;
         }
     }
-    return index;
+    return [index,arr];
 }   
 
 let arr2 = [1,1,1,2,2,3,3,3,4,5,5];
 const result2 = removeDupOptimized(arr2);
 console.log("optimized approach : ",result2);
+
+
+// Using for loop + Object/Map (Most Efficient for Large Arrays)
+function removeDuplicates1(arr) {
+  let seen = {};
+  let result = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (!seen[arr[i]]) {
+      seen[arr[i]] = true;
+      result.push(arr[i]);
+    }
+  }
+  return result;
+}
+
+console.log(removeDuplicates1([10, 20, 20, 30, 40, 50, 50]));
+// Output: [10, 20, 30, 40, 50]
+
+
+// Using for loop + includes() (Simpler but Less Efficient)
+
+function removeDuplicates2(arr) {
+  let result = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (!result.includes(arr[i])) {
+      result.push(arr[i]);
+    }
+  }
+  return result;
+}
+
+console.log(removeDuplicates2([10, 20, 20, 30, 40, 50, 50]));
+// Output: [10, 20, 30, 40, 50]
+
+
+// Using for...of loop + Set (Hybrid Approach)
+
+function removeDuplicates3(arr) {
+  let seen = new Set();
+  let result = [];
+
+  for (let value of arr) {
+    if (!seen.has(value)) {
+      seen.add(value);
+      result.push(value);
+    }
+  }
+  return result;
+}
+
+console.log(removeDuplicates3([10, 20, 20, 30, 40, 50, 50]));
+// Output: [10, 20, 30, 40, 50]
