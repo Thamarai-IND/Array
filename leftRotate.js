@@ -52,3 +52,25 @@ let arr3 = [1, 2, 3, 4, 5]
 let d = 3;
 const response3 = leftRotateNaive(arr3,d);
 console.log(response3);
+
+
+// another method
+
+function leftRotate4(arr,d) {
+    let temp = [];
+    for(let i=0; i<d; i++) {
+        temp[i] = arr[i];
+    }
+    for(let i=d; i<arr.length; i++) {
+        arr[i-d] = arr[i];
+    }
+    for(let i=0; i<d; i++) {
+        arr[arr.length-d+i] = temp[i];
+    }
+    return arr;
+}
+
+let arr4 = [1, 2, 3, 4, 5]
+let d1 = 2;
+const response4 = leftRotate4(arr4,d1);
+console.log(response4);
