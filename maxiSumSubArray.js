@@ -14,7 +14,7 @@ function maxSum(arr) {
 
 // Test case
 const arr = [1, -2, 3, 4, -1, 2, 1, -5, 4];
-console.log("Maximum Subarray Sum:",maxSum(arr));
+console.log("Maximum Subarray Sum:",maxSum(arr)); // expected output : 8
 
 // Time Complexity: O(N^2) and Auxiliary Space: O(1)
 
@@ -38,6 +38,6 @@ function maximum(arr) {
 
 // Test case
 const arr2 = [1, -2, 3, 4, -1, 2, 1, -5, 4];
-console.log("Max Subarray Sum:", maximum(arr2)); // Expected Output: 7
+console.log("Max Subarray Sum:", maximum(arr2)); // Expected Output: 9
 
 // Time Complexity: O(N) and Auxiliary Space: O(1)
