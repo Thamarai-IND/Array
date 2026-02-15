@@ -38,3 +38,33 @@ return res;
 let arr = [5, -2, 3, 4];
 let n = arr.length;
 console.log(maxCircularSum(arr, n)); // output: 12
+
+
+// efficient solution: 
+
+function normalMaxSum(arr, n) {
+let res = arr[0];
+let maxEnding = arr[0];
+for (let i = 1; i < n; i++) {
+maxEnding = Math.max(maxEnding + arr[i], arr[i]);
+res = Math.max(maxEnding, res);
+}
+return res;
+}
+
+function overallMaxSum(arr, n) {
+let max_normal = normalMaxSum(arr, n);
+if (max_normal < 0) return max_normal;
+let arr_sum = 0;
+for (let i = 0; i < n; i++) {
+arr_sum += arr[i];
+arr[i] = -arr[i];
+}
+let max_circular = arr_sum + normalMaxSum(arr, n);
+return Math.max(max_circular, max_normal);
+}
+
+// Example usage
+let array = [8, -4, 3, -5, 4];
+let len = array.length;
+console.log(overallMaxSum(array, len));
