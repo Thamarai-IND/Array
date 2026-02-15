@@ -1,0 +1,40 @@
+// Maximum Difference Problem with Order
+
+/**
+ * Given an array arr[] of integers, find out the maximum difference between any two elements 
+ * such that larger element appears after the smaller number. 
+ * 
+ * 
+        Input : arr = {2, 3, 10, 6, 4, 8, 1}
+        Output : 8
+        Explanation : The maximum difference is between 10 and 2.
+
+        Input : arr = {7, 9, 5, 6, 3, 2}
+        Output : 2
+        Explanation : The maximum difference is between 9 and 7.
+
+
+ */
+
+// Naive Solution
+
+/** 
+ * Use two loops. In the outer loop, pick elements one by one and in the inner loop calculate the difference of the picked element with every other element in the array and compare the difference with the maximum difference calculated so far. Below is the implementation of the above approach : 
+ */
+
+function maxDiff(arr) {
+    let max_diff = arr[1] - arr[0];
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] - arr[i] > max_diff) {
+                max_diff = arr[j] - arr[i];
+            }
+        }
+    }
+    return max_diff;
+}
+
+let arr = [1, 2, 90, 10, 110];
+console.log("Maximum difference is " + maxDiff(arr)); // output: Maximum difference is 109
+
+// Time Complexity : O(n^2)  and Auxiliary Space : O(1)
