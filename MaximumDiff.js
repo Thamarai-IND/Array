@@ -38,3 +38,48 @@ let arr = [1, 2, 90, 10, 110];
 console.log("Maximum difference is " + maxDiff(arr)); // output: Maximum difference is 109
 
 // Time Complexity : O(n^2)  and Auxiliary Space : O(1)
+
+
+// Efficient Solution 
+
+/**
+ * In this method, instead of taking difference of the picked element with every other element, 
+ * we take the difference with the minimum element found so far. 
+ * So we need to keep track of 2 things: 
+ 
+    1) Maximum difference found so far (max_diff). 
+    2) Minimum number visited so far (min_element).
+
+ */
+
+// JavaScript program to find Maximum difference
+// between two elements such that larger
+// element appears after the smaller number
+
+function maxDiff(arr, arr_size) {
+  // Maximum difference found so far
+  let max_diff = arr[1] - arr[0];
+  
+  // Minimum number visited so far
+  let min_element = arr[0];
+  for(let i = 1; i < arr_size; i++) {
+    if (arr[i] - min_element > max_diff) {
+      max_diff = arr[i] - min_element;
+    }
+    if (arr[i] < min_element) {
+      min_element = arr[i];
+    }
+  }
+  
+  return max_diff;
+}
+
+// Example usage
+let array = [1, 2, 90, 10, 110];
+let n = arr.length;
+
+console.log("Maximum difference is " + maxDiff(array, n));
+
+// output: Maximum difference is 109
+
+// Time Complexity : O(n)  and  Auxiliary Space : O(1)
